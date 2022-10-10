@@ -16,9 +16,12 @@ public class MessageController {
     RabbitMQService rabbitMQService;
 
     @PutMapping
-    private ResponseEntity enviaMensagem(@RequestBody ChatMessageDto messageDto){
-        System.out.println(messageDto.message);
+    private ResponseEntity enviaMensagem(@RequestBody ChatMessageDto messageDto) {
+
+        System.out.println("Message received: " + messageDto.getMessage());
+
         this.rabbitMQService.enviaMensagem(RabbitMQConstants.NOMA_FILA, messageDto);
+
         return new ResponseEntity(HttpStatus.OK);
     }
 }
