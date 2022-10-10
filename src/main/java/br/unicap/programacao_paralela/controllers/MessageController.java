@@ -1,5 +1,6 @@
 package br.unicap.programacao_paralela.controllers;
 
+import br.unicap.programacao_paralela.connections.RabbitMQConnection;
 import br.unicap.programacao_paralela.connections.RabbitMQConstants;
 import br.unicap.programacao_paralela.dtos.ChatMessageDto;
 import br.unicap.programacao_paralela.services.RabbitMQService;
@@ -18,9 +19,9 @@ public class MessageController {
     @PutMapping
     private ResponseEntity enviaMensagem(@RequestBody ChatMessageDto messageDto) {
 
-        System.out.println("Message received: " + messageDto.getMessage());
+        System.out.println("Message to send: " + messageDto.getMessage());
 
-        this.rabbitMQService.enviaMensagem(RabbitMQConstants.NOMA_FILA, messageDto);
+        this.rabbitMQService.enviaMensagem(RabbitMQConstants.DESTINO, messageDto);
 
         return new ResponseEntity(HttpStatus.OK);
     }
