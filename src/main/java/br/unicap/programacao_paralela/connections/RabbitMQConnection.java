@@ -33,10 +33,13 @@ public class RabbitMQConnection {
 
     @PostConstruct
     private void adiciona(){
-        Queue fila = this.fila(RabbitMQConstants.NOMA_FILA);
+        Queue filaUsuario = this.fila(RabbitMQConstants.USUARIO);
+        Queue filaDestino = this.fila(RabbitMQConstants.DESTINO);
         DirectExchange troca = this.trocaDireta();
 
-        this.amqpAdmin.declareQueue(fila);
+        this.amqpAdmin.declareQueue(filaUsuario);
+        this.amqpAdmin.declareQueue(filaDestino);
+
         this.amqpAdmin.declareExchange(troca);
     }
 }
