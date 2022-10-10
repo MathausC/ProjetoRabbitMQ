@@ -7,7 +7,7 @@ public class ChatMessageDto implements Serializable {
     private int _hour;
     private String _message;
     private int _minutes;
-    private float _seconds;
+    private int _seconds;
 
     public ChatMessageDto() {}
 
@@ -27,7 +27,7 @@ public class ChatMessageDto implements Serializable {
         return _minutes;
     }
 
-    public float getSeconds() {
+    public int getSeconds() {
         return _seconds;
     }
 
@@ -47,7 +47,7 @@ public class ChatMessageDto implements Serializable {
         _minutes = minutes;
     }
 
-    public void setSeconds(float seconds) {
+    public void setSeconds(int seconds) {
         _seconds = seconds;
     }
 }
